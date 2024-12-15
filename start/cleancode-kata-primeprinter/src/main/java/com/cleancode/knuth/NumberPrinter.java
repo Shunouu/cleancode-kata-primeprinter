@@ -11,12 +11,19 @@ public class NumberPrinter {
     }
 
     public void printNumbers(int[] numbers, int numberOfNumbers) {
-        System.out.println("Les " + numberOfNumbers + " nombres sont :");
-        for (int i = 0; i < numberOfNumbers; i++) {
-            System.out.print(numbers[i] + " ");
-            if ((i + 1) % columns == 0) {
+        int pageNumber = 1;
+        int pageOffset = 0;
+
+        while (pageOffset < numberOfNumbers) {
+            System.out.println("Page " + pageNumber);
+            for (int rowOffset = 0; rowOffset < linesPerPage && pageOffset < numberOfNumbers; rowOffset++) {
+                for (int column = 0; column < columns && pageOffset < numberOfNumbers; column++) {
+                    System.out.printf("%10d", numbers[pageOffset++]);
+                }
                 System.out.println();
             }
+            pageNumber++;
+            System.out.println();
         }
     }
 }
