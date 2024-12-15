@@ -1,2 +1,5 @@
-package com.cleancode.knuth;public class PrimeGenerator {
+package com.cleancode.knuth;
+
+public interface PrimeGenerator {
+    int[] generatePrimes(int M);
 }
